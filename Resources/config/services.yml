@@ -1,0 +1,15 @@
+parameters:
+  cassandra_session_handler.class: Alfatraining\CassandraSessionHandlerBundle\Lib\Session\Storage\Handler\CassandraSessionHandler
+  cassandra_cluster.class: Alfatraining\CassandraSessionHandlerBundle\Lib\Cassandra\Cluster
+
+services:
+  alfatraining_cassandra_session_handler.cassandra_cluster:
+    class: %cassandra_cluster.class%
+    arguments:
+      - @service_container # grabs a few parameters from the service container
+  alfatraining_cassandra_session_handler.cassandra_session_handler:
+    class: %cassandra_session_handler.class%
+    arguments:
+      - @alfatraining_cassandra_session_handler.cassandra_cluster
+      - { keyspace: "%cassandra_session_handler_keyspace%", column_family: "%cassandra_session_handler_column_family%", session_lifetime: %cassandra_session_handler_session_lifetime% }
+      - @logger

@@ -1,0 +1,27 @@
+{
+    "name": "alfatraining/cassandra-session-handler-bundle",
+    "description": "Cassandra Session Handler Bundle for Symfony 2",
+    "keywords": ["symfony", "bundle", "datastax", "cassandra", "session"],
+    "type": "library",
+    "require": {
+        "php": ">=5.3.4",
+        "datastax/php-driver": "^1.0",
+        "symfony/symfony": ">= 2.7.0",
+        "psr/log": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Lohse",
+            "email": "daniel.lohse@alfatraining.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+      "optimize-autoloader": true
+    },
+    "autoload": {
+      "classmap": ["Lib/"],
+      "psr-4": { "Alfatraining\\CassandraSessionHandlerBundle\\": "" }
+    }
+}
